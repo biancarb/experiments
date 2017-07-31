@@ -1,6 +1,6 @@
 import Experiment from '../../classes/Experiment'
 import Walker from './Walker'
-import colors from '../../data/colors.json'
+import colors from '../../data/colors/walkers.json'
 import forEach from '../../library/forEach'
 import { randomInt } from '../../library/random'
 
