@@ -1,8 +1,8 @@
 import Experiment from '../../classes/Experiment'
 import Walker from './Walker'
 import colors from '../../data/colors.json'
-import randomInt from '../../library/randomInt'
 import forEach from '../../library/forEach'
+import { randomInt } from '../../library/random'
 
 export default class WalkersExperiment extends Experiment {
 	

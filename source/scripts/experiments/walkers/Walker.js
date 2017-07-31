@@ -1,4 +1,4 @@
-import randomInt from '../../library/randomInt'
+import { randomInt } from '../../library/random'
 
 export default class Walker {
 	
