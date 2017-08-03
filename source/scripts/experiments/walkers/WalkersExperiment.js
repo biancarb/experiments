@@ -14,7 +14,7 @@ export default class WalkersExperiment extends Experiment {
 		this.colors = null
 		
 		this.createWalkers()
-		this.init()
+		this.update()
 	}
 	
 	createWalkers() {
@@ -35,6 +35,15 @@ export default class WalkersExperiment extends Experiment {
 		this.walkers.push(walker)
 	}
 	
+	update() {
+		super.update()
+		
+		this.context.globalAlpha = 0.1
+		this.context.globalCompositeOperation = 'lighter'
+		
+		forEach(this.walkers, (walker) => walker.draw(this.context))
+	}
+	
 	dblclick() {
 		super.dblclick()
 		this.createWalkers()
@@ -43,15 +52,6 @@ export default class WalkersExperiment extends Experiment {
 	resize() {
 		super.resize()
 		this.createWalkers()
-	}
-	
-	init() {
-		super.init()
-		
-		this.context.globalAlpha = 0.1
-		this.context.globalCompositeOperation = 'lighter'
-		
-		forEach(this.walkers, (walker) => walker.draw(this.context))
 	}
 	
 }
