@@ -4,6 +4,7 @@ export default class Experiment {
 		this.backgroundColor = backgroundColor || '#030303'
 		this.canvas = null
 		this.context = null
+		this.animationFrame = null
 		
 		this.createCanvas()
 		this.createContext()
@@ -51,7 +52,13 @@ export default class Experiment {
 	}
 	
 	update() {
-		window.requestAnimationFrame(this.update.bind(this))
+		this.animationFrame = window.requestAnimationFrame(this.update.bind(this))
+	}
+	
+	destroy() {
+		window.cancelAnimationFrame(this.animationFrame)
+		this.canvas.parentNode.removeChild(this.canvas)
+		this.context = null
 	}
 	
 }
