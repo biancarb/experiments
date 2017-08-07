@@ -1,0 +1,62 @@
+.menu {
+	padding-right: 20px;
+	position: fixed;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.menu_item {
+	list-style: none;
+	padding: 4px 0;
+}
+
+.menu_link {
+	display: block;
+	position: relative;
+}
+
+.menu_square {
+	background-color: $color-square;
+	display: block;
+	height: 20px;
+	transition: background-color 0.3s ease, box-shadow 0.2s, transform 0.3s;
+	width: 20px;
+	
+	&:hover {
+		background-color: $color-highlight;
+	}
+	
+	.menu_link.-active & {
+		background-color: transparent;
+		box-shadow: 0 0 0 2px $color-highlight inset;
+		transform: scale(1.4);
+	}
+}
+
+.menu_experiment {
+	color: $color-experiment;
+	font: 15px $font-main;
+	letter-spacing: 1px;
+	opacity: 0;
+	padding-right: 15px;
+	pointer-events: none;
+	position: absolute;
+	text-shadow: 0 0 4px currentColor;
+	top: 50%;
+	transform: translate(-75%, -50%);
+	transition: color 0.3s ease, opacity 0.3s, transform 0.3s;
+	white-space: nowrap;
+	z-index: -1;
+	
+	.menu_link:hover & {
+		opacity: 1;
+		transform: translate(-100%, -50%);
+	}
+	
+	.menu_link.-active & {
+		color: $color-highlight;
+		opacity: 1;
+		transform: translate(-100%, -50%);
+	}
+}
