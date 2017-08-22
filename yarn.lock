@@ -5326,9 +5326,15 @@ tfunk@^3.0.1:
     chalk "^1.1.1"
     object-path "^0.9.0"
 
+<<<<<<< db06c3a81778858d09077f5023af97d8edc8d6dc
 three@^0.87.1:
   version "0.87.1"
   resolved "https://registry.yarnpkg.com/three/-/three-0.87.1.tgz#466a34edc4543459ced9b9d7d276b65216fe2ba8"
+=======
+three-js@^79.0.0:
+  version "79.0.0"
+  resolved "https://registry.yarnpkg.com/three-js/-/three-js-79.0.0.tgz#0318eaacab286ddcf88fa3e1977e8a6ee6957b59"
+>>>>>>> Adding three.js
 
 through2@2.X, through2@^2, through2@^2.0.0, through2@^2.0.3:
   version "2.0.3"
