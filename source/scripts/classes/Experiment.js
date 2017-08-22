@@ -1,4 +1,4 @@
-const Stats = require('stats-js');
+import Stats from 'stats.js'
 
 export default class Experiment {
 	

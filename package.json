@@ -25,7 +25,8 @@
     "gulp-sourcemaps": "^2.4.1",
     "gulp-uglify": "^2.0.1",
     "require-dir": "^0.3.1",
-    "stats-js": "^1.0.0-alpha1",
+    "stats.js": "^0.17.0",
+    "three": "^0.87.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }
