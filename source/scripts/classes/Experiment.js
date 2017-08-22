@@ -4,6 +4,11 @@ export default class Experiment {
 		this.backgroundColor = backgroundColor || '#030303'
 		this.canvas = null
 		this.context = null
+		
+		this.dblclickEvent = this.dblclick.bind(this)
+		this.mousemoveEvent = this.mousemove.bind(this)
+		this.resizeEvent = this.resize.bind(this)
+		
 		this.animationFrame = null
 		
 		this.createCanvas()
@@ -29,9 +34,9 @@ export default class Experiment {
 	}
 	
 	bindEvents() {
-		this.canvas.addEventListener('dblclick', this.dblclick.bind(this))
-		this.canvas.addEventListener('mousemove', this.mousemove.bind(this))
-		window.addEventListener('resize', this.resize.bind(this))
+		this.canvas.addEventListener('dblclick', this.dblclickEvent)
+		this.canvas.addEventListener('mousemove', this.mousemoveEvent)
+		window.addEventListener('resize', this.resizeEvent)
 	}
 	
 	dblclick() {
@@ -57,8 +62,16 @@ export default class Experiment {
 	
 	destroy() {
 		window.cancelAnimationFrame(this.animationFrame)
+		this.destroyEvents()
+		
 		this.canvas.parentNode.removeChild(this.canvas)
 		this.context = null
+	}
+	
+	destroyEvents() {
+		this.canvas.removeEventListener('dblclick', this.dblclickEvent)
+		this.canvas.removeEventListener('mousemove', this.mousemoveEvent)
+		window.removeEventListener('resize', this.resizeEvent)
 	}
 	
 }
