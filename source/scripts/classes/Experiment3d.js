@@ -88,14 +88,18 @@ export default class Experiment3d {
 	
 	destroy() {
 		window.cancelAnimationFrame(this.animationFrame)
-		this.destroyEvents()
 		
-		this.scene = null
-		this.camera = null
-		this.renderer = null
+		this.destroyEvents()
+		this.destroyAttributes()
 		
 		this.stats.domElement.remove()
 		document.querySelector('canvas').remove()
+	}
+	
+	destroyAttributes() {
+		this.scene = null
+		this.camera = null
+		this.renderer = null
 	}
 	
 	destroyEvents() {

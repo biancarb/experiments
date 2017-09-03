@@ -3,7 +3,7 @@ import Pug from 'pug'
 export default class Player {
 	
 	constructor(song) {
-		this.player = null
+		this.html = null
 		this.song = song
 		this.success = false
 		
@@ -22,10 +22,10 @@ div.player
 	h1.player_song-title Loading...
 		`
 		
-		this.player = document.createElement('div')
-		this.player.innerHTML = Pug.render(player)
+		this.html = document.createElement('div')
+		this.html.innerHTML = Pug.render(player)
 		
-		document.body.appendChild(this.player)
+		document.body.appendChild(this.html)
 	}
 	
 	createAttributes() {

@@ -75,4 +75,12 @@ export default class SpectrumExperiment extends Experiment3d {
 		}
 	}
 	
+	destroy() {
+		super.destroy()
+		
+		this.player.html.remove()
+		this.player = null
+		this.song = null
+	}
+	
 }
