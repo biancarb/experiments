@@ -4,6 +4,7 @@ import Experiment3d from '../../classes/Experiment3d'
 import Bar from './Bar'
 import Song from './Song'
 import Player from './Player'
+import songs from '../../data/spectrum/songs.json'
 import forEach from '../../library/forEach'
 import { get } from '../../library/ajax'
 

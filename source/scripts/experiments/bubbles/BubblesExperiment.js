@@ -1,6 +1,6 @@
 import Experiment from '../../classes/Experiment'
 import Bubble from './Bubble'
-import colors from '../../data/colors/bubbles.json'
+import colors from '../../data/bubbles/colors.json'
 import forEach from '../../library/forEach'
 import { random, randomInt } from '../../library/random'
 
