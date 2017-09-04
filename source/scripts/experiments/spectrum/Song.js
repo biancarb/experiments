@@ -30,7 +30,6 @@ export default class Song {
 	createAttributes() {
 		this.audioContext = new (window.AudioContext || window.webkitAudioContext)()
 		
-		this.audio.loop = true
 		this.audio.crossOrigin = 'anonymous'
 		
 		this.analyser = this.audioContext.createAnalyser()
