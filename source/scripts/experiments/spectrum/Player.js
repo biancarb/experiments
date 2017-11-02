@@ -1,11 +1,13 @@
 import Pug from 'pug'
 import Song from './Song'
+import { shuffle } from '../../library/arrays'
 import { get } from '../../library/ajax'
 
 export default class Player {
 	
 	constructor(songs) {
-		this.songs = songs
+		this.songs = shuffle(songs)
+		
 		this.index = 0
 		this.currentSong = null
 		this.html = null
