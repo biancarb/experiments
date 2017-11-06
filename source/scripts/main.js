@@ -1,9 +1,11 @@
 import WalkersExperiment from './experiments/walkers/WalkersExperiment'
 import BubblesExperiment from './experiments/bubbles/BubblesExperiment'
+import PaintExperiment from './experiments/paint/PaintExperiment'
 
 const experiments = {
 	'walkers': WalkersExperiment,
-	'bubbles': BubblesExperiment
+	'bubbles': BubblesExperiment,
+	'paint': PaintExperiment
 }
 
 const defaultExperiment = Object.keys(experiments)[0]
