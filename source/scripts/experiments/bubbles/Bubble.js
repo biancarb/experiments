@@ -45,10 +45,9 @@ export default class Bubble {
 	
 	draw() {
 		this.context.beginPath()
-		this.context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
 		this.context.strokeStyle = hexToRgba(this.color, this.opacity)
+		this.context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
 		this.context.stroke()
-		this.context.closePath()
 	}
 	
 	isExpired() {

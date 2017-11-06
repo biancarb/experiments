@@ -7,7 +7,7 @@ import { randomInt } from '../../library/random'
 export default class WalkersExperiment extends Experiment {
 	
 	constructor() {
-		super()
+		super('#030303')
 		
 		this.walkers = []
 		this.number = 3000
