@@ -3,12 +3,14 @@ import Stats from 'stats.js'
 export default class Experiment {
 	
 	constructor(backgroundColor) {
-		this.backgroundColor = backgroundColor || '#030303'
+		this.backgroundColor = backgroundColor || '#000'
 		this.canvas = null
 		this.context = null
 		
 		this.dblclickEvent = this.dblclick.bind(this)
 		this.mousemoveEvent = this.mousemove.bind(this)
+		this.mouseupEvent = this.mouseup.bind(this)
+		this.mousedownEvent = this.mousedown.bind(this)
 		this.resizeEvent = this.resize.bind(this)
 		this.keydownEvent = this.keydown.bind(this)
 		
@@ -54,11 +56,14 @@ export default class Experiment {
 	bindEvents() {
 		this.canvas.addEventListener('dblclick', this.dblclickEvent)
 		this.canvas.addEventListener('mousemove', this.mousemoveEvent)
+		this.canvas.addEventListener('mouseup', this.mouseupEvent)
+		this.canvas.addEventListener('mousedown', this.mousedownEvent)
+		
 		window.addEventListener('resize', this.resizeEvent)
 		window.addEventListener('keydown', this.keydownEvent)
 	}
 	
-	dblclick() {
+	dblclick(event) {
 		this.context.globalAlpha = 1
 		this.context.globalCompositeOperation = 'source-over'
 		
@@ -66,6 +71,12 @@ export default class Experiment {
 	}
 	
 	mousemove(event) {
+	}
+	
+	mouseup(event) {
+	}
+	
+	mousedown(event) {
 	}
 	
 	resize() {
@@ -102,6 +113,9 @@ export default class Experiment {
 	destroyEvents() {
 		this.canvas.removeEventListener('dblclick', this.dblclickEvent)
 		this.canvas.removeEventListener('mousemove', this.mousemoveEvent)
+		this.canvas.removeEventListener('mouseup', this.mouseupEvent)
+		this.canvas.removeEventListener('mousedown', this.mousedownEvent)
+		
 		window.removeEventListener('resize', this.resizeEvent)
 		window.removeEventListener('keydown', this.keydownEvent)
 	}
