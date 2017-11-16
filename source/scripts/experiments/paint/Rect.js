@@ -17,13 +17,10 @@ export default class Rect {
 		this.y = event.clientY
 		
 		if (this.paint) {
-			const width = this.x - this.startX
-			const height = this.y - this.startY
-			
 			this.context.clearRect(0, 0, window.innerWidth, window.innerHeight)
 			
-			this.context.strokeStyle = '#000'
-			this.context.lineWidth = 10
+			const width = this.x - this.startX
+			const height = this.y - this.startY
 			
 			this.context.strokeRect(this.startX, this.startY, width, height)
 		}
@@ -33,9 +30,13 @@ export default class Rect {
 		this.paint = false
 	}
 	
-	mousedown() {
+	mousedown(color, size) {
 		this.startX = this.x
 		this.startY = this.y
+		
+		this.context.strokeStyle = color
+		this.context.lineWidth = size
+		this.context.lineJoin = 'miter'
 		
 		this.paint = true
 	}

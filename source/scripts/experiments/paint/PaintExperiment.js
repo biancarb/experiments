@@ -17,11 +17,23 @@ export default class PaintExperiment extends Experiment {
 		
 		this.tools = null
 		
+		this.clear = null
+		this.pencil = null
+		this.line = null
+		this.circle = null
+		this.rect = null
+		this.triangle = null
+		this.color = null
+		this.size = null
+		this.sizeValue = null
+		
 		this.configureCanvas()
 		this.createMainCanvas()
 		this.createMainContext()
 		
 		this.createTools()
+		this.findTools()
+		this.bindToolEvents()
 	}
 	
 	configureCanvas() {
@@ -58,7 +70,7 @@ export default class PaintExperiment extends Experiment {
 	}
 	
 	mousedown() {
-		this.activeTool.mousedown()
+		this.activeTool.mousedown(this.color.value, this.size.value)
 	}
 	
 	updateMainCanvas() {
@@ -101,6 +113,44 @@ export default class PaintExperiment extends Experiment {
 		this.tools.innerHTML = Pug.render(pug)
 		
 		document.body.appendChild(this.tools)
+	}
+	
+	findTools() {
+		this.clear = document.querySelector('.js-clear')
+		this.pencil = document.querySelector('.js-pencil')
+		this.line = document.querySelector('.js-line')
+		this.circle = document.querySelector('.js-circle')
+		this.rect = document.querySelector('.js-rect')
+		this.triangle = document.querySelector('.js-triangle')
+		this.color = document.querySelector('.js-color')
+		this.size = document.querySelector('.js-size')
+		this.sizeValue = document.querySelector('.js-size-value')
+	}
+	
+	bindToolEvents() {
+		this.clear.addEventListener('click', this.clearScreen.bind(this))
+		this.pencil.addEventListener('click', event => this.selectTool(event, new Pencil(this.context)))
+		// this.line.addEventListener('click', event => this.selectTool(event, new Line(this.context)))
+		// this.circle.addEventListener('click', event => this.selectTool(event, new Circle(this.context)))
+		this.rect.addEventListener('click', event => this.selectTool(event, new Rect(this.context)))
+		// this.triangle.addEventListener('click', event => this.selectTool(event, new Triangle(this.context)))
+		this.size.addEventListener('mousemove', this.updateSize.bind(this))
+	}
+	
+	clearScreen() {
+		this.context.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight)
+		this.mainContext.clearRect(0, 0, this.mainCanvas.clientWidth, this.mainCanvas.clientHeight)
+	}
+	
+	selectTool(event, tool) {
+		this.activeTool = tool
+		
+		document.querySelector('.-active-tool').classList.remove('-active-tool')
+		event.target.classList.add('-active-tool')
+	}
+	
+	updateSize() {
+		this.sizeValue.innerText = this.size.value
 	}
 	
 	destroy() {

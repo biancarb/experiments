@@ -23,9 +23,9 @@ export default class Pencil {
 		this.paint = false
 	}
 	
-	mousedown() {
-		this.context.fillStyle = '#000'
-		this.context.lineWidth = 10
+	mousedown(color, size) {
+		this.context.strokeStyle = color
+		this.context.lineWidth = size
 		this.context.lineJoin = 'round'
 		
 		this.context.beginPath()
