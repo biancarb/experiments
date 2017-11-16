@@ -1,0 +1,147 @@
+.tools {
+	background-color: #837e8f;
+	height: 50px;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 3;
+}
+
+.tools_section {
+	display: inline-block;
+	line-height: 50px;
+	margin: 0 1.5%;
+	vertical-align: top;
+}
+
+.tools_button {
+	background-color: #fff;
+	border: none;
+	border-radius: 3px;
+	color: #837e8f;
+	cursor: pointer;
+	font: 18px/30px $font-main;
+	outline: none;
+	padding: 0 10px;
+	transition: background-color 0.3s ease, box-shadow 0.6s ease, color 0.3s ease;
+	
+	&:hover {
+		background-color: #cecece;
+	}
+	
+	&.-active-tool {
+		background-color: #837e8f;
+		box-shadow: 0 0 0 2px #fff inset;
+		color: #fff;
+	}
+}
+
+.tools_title {
+	color: #fff;
+	display: inline-block;
+	font: 18px $font-main;
+	margin-right: 10px;
+}
+
+%tools_shape {
+	background-color: #fff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 0;
+	height: 30px;
+	outline: none;
+	position: relative;
+	transition: background-color 0.3s ease, box-shadow 0.6s ease;
+	vertical-align: super;
+	width: 30px;
+	
+	&:not(:last-child) {
+		margin-right: 5px;
+	}
+	
+	&:before {
+		background-color: #837e8f;
+		content: '';
+		display: block;
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		transition: background-color 0.3s ease;
+	}
+	
+	&:hover {
+		background-color: #cecece;
+	}
+	
+	&.-active-tool {
+		background-color: #837e8f;
+		box-shadow: 0 0 0 2px #fff inset;
+		
+		&:before {
+			background-color: #fff;
+		}
+	}
+}
+
+.tools_line {
+	@extend %tools_shape;
+	
+	&:before {
+		height: 3px;
+		transform: translate(-50%, -50%) rotate(45deg);
+		width: 20px;
+	}
+}
+
+.tools_circle {
+	@extend %tools_shape;
+	
+	&:before {
+		border-radius: 50%;
+		height: 15px;
+		width: 15px;
+	}
+}
+.tools_rect {
+	@extend %tools_shape;
+	
+	&:before {
+		height: 15px;
+		width: 15px;
+	}
+}
+.tools_triangle {
+	@extend %tools_shape;
+	
+	&:before {
+		background-color: transparent;
+		border-color: transparent transparent #837e8f transparent;
+		border-style: solid;
+		border-width: 0 7.5px 13.0px 7.5px;
+		height: 0;
+		width: 0;
+	}
+}
+
+.tools_color {
+	cursor: pointer;
+	outline: none;
+	width: 50px;
+}
+
+.tools_size {
+	cursor: pointer;
+	margin-right: 10px;
+	outline: none;
+	vertical-align: sub;
+	width: 100px;
+}
+
+.tools_size-value {
+	color: #fff;
+	font: 18px $font-main;
+}
