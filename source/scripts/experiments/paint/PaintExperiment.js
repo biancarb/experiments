@@ -2,6 +2,7 @@ import Pug from 'pug'
 import Experiment from '../../classes/Experiment'
 import Pencil from './Pencil'
 import Line from './Line'
+import Circle from './Circle'
 import Rect from './Rect'
 
 export default class PaintExperiment extends Experiment {
@@ -132,7 +133,7 @@ export default class PaintExperiment extends Experiment {
 		this.clear.addEventListener('click', this.clearScreen.bind(this))
 		this.pencil.addEventListener('click', event => this.selectTool(event, new Pencil(this.context)))
 		this.line.addEventListener('click', event => this.selectTool(event, new Line(this.context)))
-		// this.circle.addEventListener('click', event => this.selectTool(event, new Circle(this.context)))
+		this.circle.addEventListener('click', event => this.selectTool(event, new Circle(this.context)))
 		this.rect.addEventListener('click', event => this.selectTool(event, new Rect(this.context)))
 		// this.triangle.addEventListener('click', event => this.selectTool(event, new Triangle(this.context)))
 		this.size.addEventListener('mousemove', this.updateSize.bind(this))
