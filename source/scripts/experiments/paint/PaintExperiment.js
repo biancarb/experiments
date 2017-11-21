@@ -4,6 +4,7 @@ import Pencil from './Pencil'
 import Line from './Line'
 import Circle from './Circle'
 import Rect from './Rect'
+import Triangle from './Triangle'
 
 export default class PaintExperiment extends Experiment {
 	
@@ -135,7 +136,7 @@ export default class PaintExperiment extends Experiment {
 		this.line.addEventListener('click', event => this.selectTool(event, new Line(this.context)))
 		this.circle.addEventListener('click', event => this.selectTool(event, new Circle(this.context)))
 		this.rect.addEventListener('click', event => this.selectTool(event, new Rect(this.context)))
-		// this.triangle.addEventListener('click', event => this.selectTool(event, new Triangle(this.context)))
+		this.triangle.addEventListener('click', event => this.selectTool(event, new Triangle(this.context)))
 		this.size.addEventListener('mousemove', this.updateSize.bind(this))
 	}
 	

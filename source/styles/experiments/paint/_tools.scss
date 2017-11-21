@@ -123,7 +123,17 @@
 		border-style: solid;
 		border-width: 0 7.5px 13.0px 7.5px;
 		height: 0;
+		transition: border-color 0.3s ease;
 		width: 0;
+	}
+	
+	&.-active-tool {
+		background-color: #837e8f;
+		
+		&:before {
+			background-color: transparent;
+			border-color: transparent transparent #fff transparent;
+		}
 	}
 }
 
