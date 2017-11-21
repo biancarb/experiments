@@ -1,5 +1,5 @@
 .tools {
-	background-color: #837e8f;
+	background-color: $paint-color-background;
 	height: 50px;
 	left: 0;
 	position: fixed;
@@ -16,10 +16,10 @@
 }
 
 .tools_button {
-	background-color: #fff;
+	background-color: $paint-color-content;
 	border: none;
 	border-radius: 3px;
-	color: #837e8f;
+	color: $paint-color-background;
 	cursor: pointer;
 	font: 18px/30px $font-main;
 	outline: none;
@@ -27,25 +27,25 @@
 	transition: background-color 0.3s ease, box-shadow 0.6s ease, color 0.3s ease;
 	
 	&:hover {
-		background-color: #cecece;
+		background-color: $paint-color-hover;
 	}
 	
 	&.-active-tool {
-		background-color: #837e8f;
-		box-shadow: 0 0 0 2px #fff inset;
-		color: #fff;
+		background-color: $paint-color-background;
+		box-shadow: 0 0 0 2px $paint-color-content inset;
+		color: $paint-color-content;
 	}
 }
 
 .tools_title {
-	color: #fff;
+	color: $paint-color-content;
 	display: inline-block;
 	font: 18px $font-main;
 	margin-right: 10px;
 }
 
 %tools_shape {
-	background-color: #fff;
+	background-color: $paint-color-content;
 	border: none;
 	border-radius: 3px;
 	cursor: pointer;
@@ -63,7 +63,7 @@
 	}
 	
 	&:before {
-		background-color: #837e8f;
+		background-color: $paint-color-background;
 		content: '';
 		display: block;
 		left: 50%;
@@ -74,15 +74,15 @@
 	}
 	
 	&:hover {
-		background-color: #cecece;
+		background-color: $paint-color-hover;
 	}
 	
 	&.-active-tool {
-		background-color: #837e8f;
-		box-shadow: 0 0 0 2px #fff inset;
+		background-color: $paint-color-background;
+		box-shadow: 0 0 0 2px $paint-color-content inset;
 		
 		&:before {
-			background-color: #fff;
+			background-color: $paint-color-content;
 		}
 	}
 }
@@ -119,7 +119,7 @@
 	
 	&:before {
 		background-color: transparent;
-		border-color: transparent transparent #837e8f transparent;
+		border-color: transparent transparent $paint-color-background transparent;
 		border-style: solid;
 		border-width: 0 7.5px 13.0px 7.5px;
 		height: 0;
@@ -128,11 +128,11 @@
 	}
 	
 	&.-active-tool {
-		background-color: #837e8f;
+		background-color: $paint-color-background;
 		
 		&:before {
 			background-color: transparent;
-			border-color: transparent transparent #fff transparent;
+			border-color: transparent transparent $paint-color-content transparent;
 		}
 	}
 }
@@ -152,6 +152,6 @@
 }
 
 .tools_size-value {
-	color: #fff;
+	color: $paint-color-content;
 	font: 18px $font-main;
 }
