@@ -41,7 +41,7 @@ export default class Triangle {
 		
 		this.context.strokeStyle = color
 		this.context.lineWidth = size
-		this.context.lineJoin = 'round'
+		this.context.lineJoin = 'miter'
 		
 		this.paint = true
 	}
