@@ -1,4 +1,5 @@
 import Pug from 'pug'
+import '../../vendors/jscolor'
 import Experiment from '../../classes/Experiment'
 import Pencil from './Pencil'
 import Line from './Line'
@@ -10,6 +11,8 @@ export default class PaintExperiment extends Experiment {
 	
 	constructor() {
 		super('#fff')
+		
+		window.jscolor()
 		
 		this.canvas.style.cursor = 'crosshair'
 		
@@ -102,7 +105,7 @@ export default class PaintExperiment extends Experiment {
 .tools_section
 	h2.tools_title Color
 
-	input.tools_color.js-color(type="color")
+	input(type="text" class="tools_color js-color jscolor {hash: true, uppercase: false}")
 
 .tools_section
 	h2.tools_title Size
