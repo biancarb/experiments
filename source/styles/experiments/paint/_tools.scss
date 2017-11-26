@@ -138,9 +138,14 @@
 }
 
 .tools_color {
-	cursor: pointer;
+	border: none;
+	border-radius: 3px;
+	color: $paint-color-background;
+	font: 15px $font-main;
+	height: 30px;
 	outline: none;
-	width: 50px;
+	text-align: center;
+	width: 75px;
 }
 
 .tools_size {

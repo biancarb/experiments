@@ -105,7 +105,7 @@ export default class PaintExperiment extends Experiment {
 .tools_section
 	h2.tools_title Color
 
-	input(type="text" class="tools_color js-color jscolor {hash: true, uppercase: false}")
+	input(type="text" class="tools_color js-color jscolor {hash: true, uppercase: false}" value="#000000")
 
 .tools_section
 	h2.tools_title Size
