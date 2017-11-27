@@ -2,6 +2,7 @@ import Pug from 'pug'
 import '../../vendors/jscolor'
 import Experiment from '../../classes/Experiment'
 import Pencil from './Pencil'
+import Spray from './Spray'
 import Line from './Line'
 import Circle from './Circle'
 import Rect from './Rect'
@@ -25,6 +26,7 @@ export default class PaintExperiment extends Experiment {
 		
 		this.clear = null
 		this.pencil = null
+		this.spray = null
 		this.line = null
 		this.circle = null
 		this.rect = null
@@ -93,6 +95,7 @@ export default class PaintExperiment extends Experiment {
 	h2.tools_title Brushes
 
 	button.tools_button.js-pencil.-active-tool Pencil
+	button.tools_button.js-spray Spray
 
 .tools_section
 	h2.tools_title Shapes
@@ -124,6 +127,7 @@ export default class PaintExperiment extends Experiment {
 	findTools() {
 		this.clear = document.querySelector('.js-clear')
 		this.pencil = document.querySelector('.js-pencil')
+		this.spray = document.querySelector('.js-spray')
 		this.line = document.querySelector('.js-line')
 		this.circle = document.querySelector('.js-circle')
 		this.rect = document.querySelector('.js-rect')
@@ -136,6 +140,7 @@ export default class PaintExperiment extends Experiment {
 	bindToolEvents() {
 		this.clear.addEventListener('click', this.clearScreen.bind(this))
 		this.pencil.addEventListener('click', event => this.selectTool(event, new Pencil(this.context)))
+		this.spray.addEventListener('click', event => this.selectTool(event, new Spray(this.context)))
 		this.line.addEventListener('click', event => this.selectTool(event, new Line(this.context)))
 		this.circle.addEventListener('click', event => this.selectTool(event, new Circle(this.context)))
 		this.rect.addEventListener('click', event => this.selectTool(event, new Rect(this.context)))
