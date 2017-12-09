@@ -23,7 +23,8 @@ export default class PaintExperiment extends Experiment {
 		this.mainContext = null
 		
 		this.tools = null
-		
+		this.menu = null
+		this.wrapper = null
 		this.clear = null
 		this.pencil = null
 		this.spray = null
@@ -88,33 +89,36 @@ export default class PaintExperiment extends Experiment {
 	
 	createTools() {
 		const pug = `
-.tools_section
-	button(type="button").tools_button.js-clear Clear
+button.tools_menu.js-menu(type="button") Menu
 
-.tools_section
-	h2.tools_title Brushes
-
-	button.tools_button.js-pencil.-active-tool Pencil
-	button.tools_button.js-spray Spray
-
-.tools_section
-	h2.tools_title Shapes
-
-	button.tools_line.js-line Line
-	button.tools_circle.js-circle Circle
-	button.tools_rect.js-rect Rect
-	button.tools_triangle.js-triangle Triangle
-
-.tools_section
-	h2.tools_title Color
-
-	input(type="text" class="tools_color js-color jscolor {hash: true, uppercase: false}" value="#000000")
-
-.tools_section
-	h2.tools_title Size
-
-	input.tools_size.js-size(type="range" min="1" max="100" value="10")
-	span.tools_size-value.js-size-value 10
+.tools_wrapper.js-wrapper
+	.tools_section
+		button(type="button").tools_button.js-clear Clear
+	
+	.tools_section
+		h2.tools_title Brushes
+	
+		button.tools_button.js-pencil.-active-tool Pencil
+		button.tools_button.js-spray Spray
+	
+	.tools_section
+		h2.tools_title Shapes
+	
+		button.tools_line.js-line Line
+		button.tools_circle.js-circle Circle
+		button.tools_rect.js-rect Rect
+		button.tools_triangle.js-triangle Triangle
+	
+	.tools_section
+		h2.tools_title Color
+	
+		input(type="text" class="tools_color js-color jscolor {hash: true, uppercase: false}" value="#000000")
+	
+	.tools_section
+		h2.tools_title Size
+	
+		input.tools_size.js-size(type="range" min="1" max="100" value="10")
+		span.tools_size-value.js-size-value 10
 		`
 		
 		this.tools = document.createElement('div')
@@ -125,6 +129,8 @@ export default class PaintExperiment extends Experiment {
 	}
 	
 	findTools() {
+		this.menu = document.querySelector('.js-menu')
+		this.wrapper = document.querySelector('.js-wrapper')
 		this.clear = document.querySelector('.js-clear')
 		this.pencil = document.querySelector('.js-pencil')
 		this.spray = document.querySelector('.js-spray')
@@ -138,6 +144,7 @@ export default class PaintExperiment extends Experiment {
 	}
 	
 	bindToolEvents() {
+		this.menu.addEventListener('click', this.toggleMenu.bind(this))
 		this.clear.addEventListener('click', this.clearScreen.bind(this))
 		this.pencil.addEventListener('click', event => this.selectTool(event, new Pencil(this.context)))
 		this.spray.addEventListener('click', event => this.selectTool(event, new Spray(this.context)))
@@ -146,6 +153,12 @@ export default class PaintExperiment extends Experiment {
 		this.rect.addEventListener('click', event => this.selectTool(event, new Rect(this.context)))
 		this.triangle.addEventListener('click', event => this.selectTool(event, new Triangle(this.context)))
 		this.size.addEventListener('mousemove', this.updateSize.bind(this))
+	}
+	
+	toggleMenu() {
+		this.menu.classList.toggle('-active')
+		this.tools.classList.toggle('-active')
+		this.wrapper.classList.toggle('-active')
 	}
 	
 	clearScreen() {

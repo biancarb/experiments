@@ -4,8 +4,82 @@
 	left: 0;
 	position: fixed;
 	top: 0;
+	transition: height 0.3s ease;
 	width: 100%;
-	z-index: 3;
+	z-index: 999;
+	
+	&.-active {
+		@include media('<medium') {
+			height: 100%;
+			overflow: auto;
+		}
+	}
+	
+	@include media('<medium') {
+		height: 80px;
+		padding: 20px;
+	}
+}
+
+.tools_menu {
+	background: none;
+	border: none;
+	display: none;
+	font-size: 0;
+	height: 35px;
+	outline: none;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	transition: transform 0.3s ease;
+	width: 35px;
+	
+	&:before {
+		background-color: $paint-color-content;
+		box-shadow: 0 -12px 0 0 $paint-color-content, 0 12px 0 0 $paint-color-content;
+		content: '';
+		display: block;
+		height: 5px;
+		width: 100%;
+	}
+	
+	&.-active {
+		transform: rotate(45deg);
+		
+		&:before {
+			box-shadow: none;
+			left: 0;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		
+		&:after {
+			background-color: $paint-color-content;
+			content: '';
+			display: block;
+			height: 100%;
+			left: 50%;
+			position: absolute;
+			top: 0;
+			transform: translateX(-50%);
+			width: 5px;
+		}
+	}
+	
+	@include media('<medium') {
+		display: block;
+	}
+}
+
+.tools_wrapper {
+	@include media('<medium') {
+		display: none;
+	}
+	
+	&.-active {
+		display: block;
+	}
 }
 
 .tools_section {
@@ -13,6 +87,17 @@
 	line-height: 50px;
 	margin: 0 1.5%;
 	vertical-align: top;
+	
+	&:not(:first-child) {
+		@include media('<medium') {
+			margin: 15px 0 0;
+		}
+	}
+	
+	@include media('<medium') {
+		display: block;
+		text-align: center;
+	}
 }
 
 .tools_button {
@@ -46,6 +131,10 @@
 	display: inline-block;
 	font: 18px $font-main;
 	margin-right: 10px;
+	
+	@include media('<medium') {
+		display: block;
+	}
 }
 
 %tools_shape {
