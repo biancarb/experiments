@@ -6,23 +6,18 @@ export default class Spray {
 		this.x = null
 		this.y = null
 		
-		this.startX = null
-		this.startY = null
-		
 		this.size = null
 		
-		this.paint = false
+		this.animationFrame = null
 	}
 	
 	mousemove(event) {
 		this.x = event.clientX
 		this.y = event.clientY
-		
-		if (this.paint) this.sprayParticles()
 	}
 	
 	mouseup() {
-		this.paint = false
+		window.cancelAnimationFrame(this.animationFrame)
 	}
 	
 	mousedown(color, size) {
@@ -30,11 +25,11 @@ export default class Spray {
 		this.context.lineWidth = this.size = size
 		this.context.lineJoin = 'round'
 		
-		this.paint = true
+		this.sprayParticles()
 	}
 	
 	sprayParticles() {
-		const density = this.size * 2
+		const density = this.size * 3
 		
 		for (let i = 0; i < density; i++) {
 			const offset = this.getOffset()
@@ -44,6 +39,8 @@ export default class Spray {
 			
 			this.context.fillRect(positionX, positionY, 1, 1)
 		}
+		
+		this.animationFrame = window.requestAnimationFrame(this.sprayParticles.bind(this))
 	}
 	
 	getOffset() {
