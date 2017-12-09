@@ -12,6 +12,17 @@ export default class Rect {
 		this.paint = false
 	}
 	
+	mousedown(color, size) {
+		this.startX = this.x
+		this.startY = this.y
+		
+		this.context.strokeStyle = color
+		this.context.lineWidth = size
+		this.context.lineJoin = 'miter'
+		
+		this.paint = true
+	}
+	
 	mousemove(event) {
 		this.x = event.clientX
 		this.y = event.clientY
@@ -28,17 +39,6 @@ export default class Rect {
 	
 	mouseup() {
 		this.paint = false
-	}
-	
-	mousedown(color, size) {
-		this.startX = this.x
-		this.startY = this.y
-		
-		this.context.strokeStyle = color
-		this.context.lineWidth = size
-		this.context.lineJoin = 'miter'
-		
-		this.paint = true
 	}
 	
 }

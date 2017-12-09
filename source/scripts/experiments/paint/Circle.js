@@ -12,6 +12,16 @@ export default class Circle {
 		this.paint = false
 	}
 	
+	mousedown(color, size) {
+		this.startX = this.x
+		this.startY = this.y
+		
+		this.context.strokeStyle = color
+		this.context.lineWidth = size
+		
+		this.paint = true
+	}
+	
 	mousemove(event) {
 		this.x = event.clientX
 		this.y = event.clientY
@@ -39,16 +49,6 @@ export default class Circle {
 	
 	mouseup() {
 		this.paint = false
-	}
-	
-	mousedown(color, size) {
-		this.startX = this.x
-		this.startY = this.y
-		
-		this.context.strokeStyle = color
-		this.context.lineWidth = size
-		
-		this.paint = true
 	}
 	
 }

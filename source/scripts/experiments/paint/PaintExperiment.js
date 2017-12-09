@@ -66,6 +66,10 @@ export default class PaintExperiment extends Experiment {
 		this.mainContext = this.mainCanvas.getContext('2d')
 	}
 	
+	mousedown() {
+		this.activeTool.mousedown(this.color.value, this.size.value)
+	}
+	
 	mousemove(event) {
 		super.mousemove(event)
 		
@@ -76,10 +80,6 @@ export default class PaintExperiment extends Experiment {
 		this.activeTool.mouseup()
 		
 		this.updateMainCanvas()
-	}
-	
-	mousedown() {
-		this.activeTool.mousedown(this.color.value, this.size.value)
 	}
 	
 	updateMainCanvas() {

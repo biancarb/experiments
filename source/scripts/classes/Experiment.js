@@ -8,9 +8,9 @@ export default class Experiment {
 		this.context = null
 		
 		this.dblclickEvent = this.dblclick.bind(this)
+		this.mousedownEvent = this.mousedown.bind(this)
 		this.mousemoveEvent = this.mousemove.bind(this)
 		this.mouseupEvent = this.mouseup.bind(this)
-		this.mousedownEvent = this.mousedown.bind(this)
 		this.resizeEvent = this.resize.bind(this)
 		this.keydownEvent = this.keydown.bind(this)
 		
@@ -55,9 +55,9 @@ export default class Experiment {
 	
 	bindEvents() {
 		this.canvas.addEventListener('dblclick', this.dblclickEvent)
+		this.canvas.addEventListener('mousedown', this.mousedownEvent)
 		this.canvas.addEventListener('mousemove', this.mousemoveEvent)
 		this.canvas.addEventListener('mouseup', this.mouseupEvent)
-		this.canvas.addEventListener('mousedown', this.mousedownEvent)
 		
 		window.addEventListener('resize', this.resizeEvent)
 		window.addEventListener('keydown', this.keydownEvent)
@@ -70,13 +70,13 @@ export default class Experiment {
 		this.createContext()
 	}
 	
+	mousedown(event) {
+	}
+	
 	mousemove(event) {
 	}
 	
 	mouseup(event) {
-	}
-	
-	mousedown(event) {
 	}
 	
 	resize() {
@@ -112,9 +112,9 @@ export default class Experiment {
 	
 	destroyEvents() {
 		this.canvas.removeEventListener('dblclick', this.dblclickEvent)
+		this.canvas.removeEventListener('mousedown', this.mousedownEvent)
 		this.canvas.removeEventListener('mousemove', this.mousemoveEvent)
 		this.canvas.removeEventListener('mouseup', this.mouseupEvent)
-		this.canvas.removeEventListener('mousedown', this.mousedownEvent)
 		
 		window.removeEventListener('resize', this.resizeEvent)
 		window.removeEventListener('keydown', this.keydownEvent)

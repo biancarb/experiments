@@ -15,6 +15,19 @@ export default class Pencil {
 		this.paint = false
 	}
 	
+	mousedown(color, size) {
+		this.startX = this.x
+		this.startY = this.y
+		
+		this.context.strokeStyle = this.color = color
+		this.context.lineWidth = this.size = size
+		this.context.lineJoin = 'round'
+		
+		this.circle()
+		
+		this.paint = true
+	}
+	
 	mousemove(event) {
 		this.x = event.clientX
 		this.y = event.clientY
@@ -34,19 +47,6 @@ export default class Pencil {
 	
 	mouseup() {
 		this.paint = false
-	}
-	
-	mousedown(color, size) {
-		this.startX = this.x
-		this.startY = this.y
-		
-		this.context.strokeStyle = this.color = color
-		this.context.lineWidth = this.size = size
-		this.context.lineJoin = 'round'
-		
-		this.circle()
-		
-		this.paint = true
 	}
 	
 	circle() {

@@ -15,6 +15,17 @@ export default class Line {
 		this.paint = false
 	}
 	
+	mousedown(color, size) {
+		this.startX = this.x
+		this.startY = this.y
+		
+		this.context.strokeStyle = this.color = color
+		this.context.lineWidth = this.size = size
+		this.context.lineJoin = 'round'
+		
+		this.paint = true
+	}
+	
 	mousemove(event) {
 		this.x = event.clientX
 		this.y = event.clientY
@@ -33,17 +44,6 @@ export default class Line {
 	
 	mouseup() {
 		this.paint = false
-	}
-	
-	mousedown(color, size) {
-		this.startX = this.x
-		this.startY = this.y
-		
-		this.context.strokeStyle = this.color = color
-		this.context.lineWidth = this.size = size
-		this.context.lineJoin = 'round'
-		
-		this.paint = true
 	}
 	
 	circle() {

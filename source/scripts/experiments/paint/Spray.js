@@ -11,6 +11,14 @@ export default class Spray {
 		this.animationFrame = null
 	}
 	
+	mousedown(color, size) {
+		this.context.fillStyle = color
+		this.context.lineWidth = this.size = size
+		this.context.lineJoin = 'round'
+		
+		this.sprayParticles()
+	}
+	
 	mousemove(event) {
 		this.x = event.clientX
 		this.y = event.clientY
@@ -18,14 +26,6 @@ export default class Spray {
 	
 	mouseup() {
 		window.cancelAnimationFrame(this.animationFrame)
-	}
-	
-	mousedown(color, size) {
-		this.context.fillStyle = color
-		this.context.lineWidth = this.size = size
-		this.context.lineJoin = 'round'
-		
-		this.sprayParticles()
 	}
 	
 	sprayParticles() {
