@@ -24,6 +24,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.4.1",
     "gulp-uglify": "^2.0.1",
+    "include-media": "^1.4.9",
     "require-dir": "^0.3.1",
     "stats-js": "^1.0.0-alpha1",
     "three-js": "^79.0.0",
