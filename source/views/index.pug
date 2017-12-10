@@ -24,3 +24,9 @@ html
 					span.menu_square.-dark
 			
 		script(src="assets/scripts/main.js")
+		script(src="https://www.googletagmanager.com/gtag/js?id=UA-110602664-1" async)
+		script.
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-110602664-1');
