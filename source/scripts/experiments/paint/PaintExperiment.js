@@ -66,14 +66,22 @@ export default class PaintExperiment extends Experiment {
 		this.mainContext = this.mainCanvas.getContext('2d')
 	}
 	
-	mousedown() {
-		this.activeTool.mousedown(this.color.value, this.size.value)
+	mousedown(event) {
+		super.mousedown(event)
+		
+		const x = event.clientX || event.touches[0].clientX
+		const y = event.clientY || event.touches[0].clientY
+		
+		this.activeTool.mousedown(x, y, this.color.value, this.size.value)
 	}
 	
 	mousemove(event) {
 		super.mousemove(event)
 		
-		this.activeTool.mousemove(event)
+		const x = event.clientX || event.touches[0].clientX
+		const y = event.clientY || event.touches[0].clientY
+		
+		this.activeTool.mousemove(x, y)
 	}
 	
 	mouseup() {

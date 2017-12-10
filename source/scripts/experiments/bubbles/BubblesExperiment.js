@@ -46,8 +46,8 @@ export default class BubblesExperiment extends Experiment {
 	mousemove(event) {
 		super.mousemove(event)
 		
-		this.x = event.clientX
-		this.y = event.clientY
+		this.x = event.clientX || event.touches[0].clientX
+		this.y = event.clientY || event.touches[0].clientY
 	}
 	
 	dblclick() {

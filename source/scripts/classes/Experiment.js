@@ -58,6 +58,9 @@ export default class Experiment {
 		this.canvas.addEventListener('mousedown', this.mousedownEvent)
 		this.canvas.addEventListener('mousemove', this.mousemoveEvent)
 		this.canvas.addEventListener('mouseup', this.mouseupEvent)
+		this.canvas.addEventListener('touchstart', this.mousedownEvent)
+		this.canvas.addEventListener('touchmove', this.mousemoveEvent)
+		this.canvas.addEventListener('touchend', this.mouseupEvent)
 		
 		window.addEventListener('resize', this.resizeEvent)
 		window.addEventListener('keydown', this.keydownEvent)

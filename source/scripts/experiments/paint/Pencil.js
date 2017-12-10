@@ -15,9 +15,9 @@ export default class Pencil {
 		this.paint = false
 	}
 	
-	mousedown(color, size) {
-		this.startX = this.x
-		this.startY = this.y
+	mousedown(x, y, color, size) {
+		this.startX = x
+		this.startY = y
 		
 		this.context.strokeStyle = this.color = color
 		this.context.lineWidth = this.size = size
@@ -28,9 +28,9 @@ export default class Pencil {
 		this.paint = true
 	}
 	
-	mousemove(event) {
-		this.x = event.clientX
-		this.y = event.clientY
+	mousemove(x, y) {
+		this.x = x
+		this.y = y
 		
 		if (this.paint) {
 			this.context.beginPath()
