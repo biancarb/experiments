@@ -16,8 +16,8 @@ export default class Pencil {
 	}
 	
 	mousedown(x, y, color, size) {
-		this.startX = x
-		this.startY = y
+		this.startX = this.x = x
+		this.startY = this.y = y
 		
 		this.context.strokeStyle = this.color = color
 		this.context.lineWidth = this.size = size

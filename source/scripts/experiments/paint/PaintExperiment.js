@@ -7,6 +7,7 @@ import Line from './Line'
 import Circle from './Circle'
 import Rect from './Rect'
 import Triangle from './Triangle'
+import forEach from '../../library/forEach'
 
 export default class PaintExperiment extends Experiment {
 	
@@ -25,6 +26,7 @@ export default class PaintExperiment extends Experiment {
 		this.tools = null
 		this.menu = null
 		this.wrapper = null
+		
 		this.clear = null
 		this.pencil = null
 		this.spray = null
@@ -69,25 +71,30 @@ export default class PaintExperiment extends Experiment {
 	mousedown(event) {
 		super.mousedown(event)
 		
-		const x = event.clientX || event.touches[0].clientX
-		const y = event.clientY || event.touches[0].clientY
+		const position = this.getPosition(event)
 		
-		this.activeTool.mousedown(x, y, this.color.value, this.size.value)
+		this.activeTool.mousedown(position.x, position.y, this.color.value, this.size.value)
 	}
 	
 	mousemove(event) {
 		super.mousemove(event)
 		
-		const x = event.clientX || event.touches[0].clientX
-		const y = event.clientY || event.touches[0].clientY
+		const position = this.getPosition(event)
 		
-		this.activeTool.mousemove(x, y)
+		this.activeTool.mousemove(position.x, position.y)
 	}
 	
 	mouseup() {
 		this.activeTool.mouseup()
 		
 		this.updateMainCanvas()
+	}
+	
+	getPosition(event) {
+		return {
+			x: event.type.startsWith('mouse') ? event.clientX : event.touches[0].clientX,
+			y: event.type.startsWith('mouse') ? event.clientY : event.touches[0].clientY
+		}
 	}
 	
 	updateMainCanvas() {
@@ -160,7 +167,7 @@ button.tools_menu.js-menu(type="button") Menu
 		this.circle.addEventListener('click', event => this.selectTool(event, new Circle(this.context)))
 		this.rect.addEventListener('click', event => this.selectTool(event, new Rect(this.context)))
 		this.triangle.addEventListener('click', event => this.selectTool(event, new Triangle(this.context)))
-		this.size.addEventListener('mousemove', this.updateSize.bind(this))
+		forEach(['mousemove', 'touchmove', 'touchend'], event => this.size.addEventListener(event, this.updateSize.bind(this)))
 	}
 	
 	toggleMenu() {
