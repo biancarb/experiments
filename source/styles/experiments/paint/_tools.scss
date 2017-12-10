@@ -19,6 +19,10 @@
 		height: 80px;
 		padding: 20px;
 	}
+	
+	@include media('<small') {
+		height: 50px;
+	}
 }
 
 .tools_menu {
@@ -70,9 +74,16 @@
 	@include media('<medium') {
 		display: block;
 	}
+	
+	@include media('<small') {
+		top: 8px;
+		right: 15px;
+	}
 }
 
 .tools_wrapper {
+	text-align: center;
+	
 	@include media('<medium') {
 		display: none;
 	}
@@ -96,7 +107,6 @@
 	
 	@include media('<medium') {
 		display: block;
-		text-align: center;
 	}
 }
 
