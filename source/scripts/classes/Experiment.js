@@ -48,7 +48,7 @@ export default class Experiment {
 		this.stats.domElement.style.position = 'absolute'
 		this.stats.domElement.style.top = 0
 		this.stats.domElement.style.left = 0
-		this.stats.domElement.style.zIndex = 100
+		this.stats.domElement.style.zIndex = 99999
 		
 		document.body.appendChild(this.stats.domElement)
 	}
@@ -118,6 +118,9 @@ export default class Experiment {
 		this.canvas.removeEventListener('mousedown', this.mousedownEvent)
 		this.canvas.removeEventListener('mousemove', this.mousemoveEvent)
 		this.canvas.removeEventListener('mouseup', this.mouseupEvent)
+		this.canvas.removeEventListener('touchstart', this.mousedownEvent)
+		this.canvas.removeEventListener('touchmove', this.mousemoveEvent)
+		this.canvas.removeEventListener('touchend', this.mouseupEvent)
 		
 		window.removeEventListener('resize', this.resizeEvent)
 		window.removeEventListener('keydown', this.keydownEvent)

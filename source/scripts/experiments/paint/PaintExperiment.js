@@ -38,6 +38,16 @@ export default class PaintExperiment extends Experiment {
 		this.size = null
 		this.sizeValue = null
 		
+		this.menuEvent = this.toggleMenu.bind(this)
+		this.clearEvent = this.clearScreen.bind(this)
+		this.pencilEvent = event => this.selectTool(event, new Pencil(this.context))
+		this.sprayEvent = event => this.selectTool(event, new Spray(this.context))
+		this.lineEvent = event => this.selectTool(event, new Line(this.context))
+		this.circleEvent = event => this.selectTool(event, new Circle(this.context))
+		this.rectEvent = event => this.selectTool(event, new Rect(this.context))
+		this.triangleEvent = event => this.selectTool(event, new Triangle(this.context))
+		this.sizeEvent = this.updateSize.bind(this)
+		
 		this.configureCanvas()
 		this.createMainCanvas()
 		this.createMainContext()
@@ -159,15 +169,15 @@ button.tools_menu.js-menu(type="button") Menu
 	}
 	
 	bindToolEvents() {
-		this.menu.addEventListener('click', this.toggleMenu.bind(this))
-		this.clear.addEventListener('click', this.clearScreen.bind(this))
-		this.pencil.addEventListener('click', event => this.selectTool(event, new Pencil(this.context)))
-		this.spray.addEventListener('click', event => this.selectTool(event, new Spray(this.context)))
-		this.line.addEventListener('click', event => this.selectTool(event, new Line(this.context)))
-		this.circle.addEventListener('click', event => this.selectTool(event, new Circle(this.context)))
-		this.rect.addEventListener('click', event => this.selectTool(event, new Rect(this.context)))
-		this.triangle.addEventListener('click', event => this.selectTool(event, new Triangle(this.context)))
-		forEach(['mousemove', 'touchmove', 'touchend'], event => this.size.addEventListener(event, this.updateSize.bind(this)))
+		this.menu.addEventListener('click', this.menuEvent)
+		this.clear.addEventListener('click', this.clearEvent)
+		this.pencil.addEventListener('click', this.pencilEvent)
+		this.spray.addEventListener('click', this.sprayEvent)
+		this.line.addEventListener('click', this.lineEvent)
+		this.circle.addEventListener('click', this.circleEvent)
+		this.rect.addEventListener('click', this.rectEvent)
+		this.triangle.addEventListener('click', this.triangleEvent)
+		forEach(['mousemove', 'touchmove', 'touchend'], event => this.size.addEventListener(event, this.sizeEvent))
 	}
 	
 	toggleMenu() {
@@ -199,6 +209,20 @@ button.tools_menu.js-menu(type="button") Menu
 		this.mainCanvas.parentNode.removeChild(this.mainCanvas)
 		
 		this.tools.parentNode.removeChild(this.tools)
+	}
+	
+	destroyEvents() {
+		super.destroyEvents()
+		
+		this.menu.removeEventListener('click', this.menuEvent)
+		this.clear.removeEventListener('click', this.clearEvent)
+		this.pencil.removeEventListener('click', this.pencilEvent)
+		this.spray.removeEventListener('click', this.sprayEvent)
+		this.line.removeEventListener('click', this.lineEvent)
+		this.circle.removeEventListener('click', this.circleEvent)
+		this.rect.removeEventListener('click', this.rectEvent)
+		this.triangle.removeEventListener('click', this.triangleEvent)
+		forEach(['mousemove', 'touchmove', 'touchend'], event => this.size.removeEventListener(event, this.sizeEvent))
 	}
 	
 }
