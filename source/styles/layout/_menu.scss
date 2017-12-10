@@ -33,6 +33,10 @@
 		box-shadow: 0 0 0 2px $color-highlight inset;
 		transform: scale(1.4);
 	}
+	
+	.menu_link.-active &.-dark {
+		box-shadow: 0 0 0 2px $color-highlight-dark inset;
+	}
 }
 
 .menu_experiment {
@@ -59,5 +63,9 @@
 		color: $color-highlight;
 		opacity: 1;
 		transform: translate(-100%, -50%);
+	}
+	
+	.menu_link.-active &.-dark {
+		color: $color-highlight-dark;
 	}
 }
