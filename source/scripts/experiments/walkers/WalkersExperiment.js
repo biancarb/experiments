@@ -41,7 +41,7 @@ export default class WalkersExperiment extends Experiment {
 		this.context.globalAlpha = 0.1
 		this.context.globalCompositeOperation = 'lighter'
 		
-		forEach(this.walkers, (walker) => walker.draw(this.context))
+		forEach(this.walkers, walker => walker.draw(this.context))
 	}
 	
 	dblclick() {
