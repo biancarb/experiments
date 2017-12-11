@@ -13,7 +13,7 @@
 
 %button {
 	background-color: transparent;
-	border: 1px solid $color-player-default;
+	border: 1px solid $spectrum-color-player-default;
 	border-radius: 50%;
 	cursor: pointer;
 	font-size: 0;
@@ -43,7 +43,7 @@
 	
 	&:before {
 		border-bottom: 8px solid transparent;
-		border-left: 12px solid $color-player-default;
+		border-left: 12px solid $spectrum-color-player-default;
 		border-top: 8px solid transparent;
 		content: '';
 		left: 35%;
@@ -54,7 +54,7 @@
 	}
 	
 	&:after {
-		border-right: 3px solid $color-player-default;
+		border-right: 3px solid $spectrum-color-player-default;
 		content: '';
 		height: 16px;
 		left: 60%;
@@ -66,11 +66,11 @@
 	}
 	
 	&:hover:before {
-		border-left-color: $color-player-highlight;
+		border-left-color: $spectrum-color-player-highlight;
 	}
 	
 	&:hover:after {
-		border-right-color: $color-player-highlight;
+		border-right-color: $spectrum-color-player-highlight;
 	}
 }
 
@@ -80,7 +80,7 @@
 	&.-play {
 		&:after {
 			border-bottom: 12px solid transparent;
-			border-left: 18px solid $color-player-default;
+			border-left: 18px solid $spectrum-color-player-default;
 			border-top: 12px solid transparent;
 			content: '';
 			left: 38%;
@@ -92,14 +92,14 @@
 		}
 		
 		&:hover:after {
-			border-left-color: $color-player-highlight;
+			border-left-color: $spectrum-color-player-highlight;
 		}
 	}
 	
 	&.-pause {
 		&:after {
-			border-left: 4px solid $color-player-default;
-			border-right: 4px solid $color-player-default;
+			border-left: 4px solid $spectrum-color-player-default;
+			border-right: 4px solid $spectrum-color-player-default;
 			content: '';
 			height: 18px;
 			transition: border-color 0.3s ease;
@@ -111,13 +111,13 @@
 		}
 		
 		&:hover:after {
-			border-color: $color-player-highlight;
+			border-color: $spectrum-color-player-highlight;
 		}
 	}
 }
 
 .player_song-title {
-	color: $color-player-default;
+	color: $spectrum-color-player-default;
 	font: 20px $font-main;
 	text-align: center;
 }
@@ -128,6 +128,6 @@
 	transition: color 0.3s ease;
 	
 	&:hover {
-		color: $color-player-highlight;
+		color: $spectrum-color-player-highlight;
 	}
 }
